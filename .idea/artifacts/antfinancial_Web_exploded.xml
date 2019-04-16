@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="antfinancial:Web exploded">
+    <output-path>$PROJECT_DIR$/classes/artifacts/antfinancial_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="antfinancial/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="antfinancial" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="junit4" module-name="antfinancial" />
+          <element id="library" level="module" name="jackson-core-asl-1.9.13.jar" module-name="antfinancial" />
+          <element id="library" level="module" name="jackson-mapper-asl-1.9.13.jar" module-name="antfinancial" />
+          <element id="library" level="module" name="commons-lang-2.4.jar" module-name="antfinancial" />
+          <element id="library" level="project" name="antlr-2.7.7" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

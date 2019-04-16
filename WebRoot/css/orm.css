@@ -1,0 +1,98 @@
+/* 通用 */
+*{
+	font-size: 12px;
+}
+#pageTool{
+	width: 100%;
+	text-align: right;
+}
+/*登录界面*/
+.form-login {
+	max-width: 330px;
+	margin: 230px auto 0;
+	background: #fff;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+}
+
+.form-login h2.form-login-heading {
+	margin: 0;
+	padding: 25px 20px;
+	text-align: center;
+	background: #68dff0;
+	border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	color: #fff;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: 300;
+}
+
+.login-wrap {
+	padding: 20px;
+}
+
+.login-wrap .registration {
+	text-align: center;
+}
+.login-wrap .registration .msg{
+	color: red;
+}
+
+button{
+	background: #68dff0 none repeat scroll 0 0;
+}
+button:HOVER {
+	background: #48bcb4;
+}
+
+/* 左侧菜单 */
+.left-menum {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	min-height: 100%;
+	width: 230px;
+	z-index: 810;
+	background-color: #222d32;
+	overflow: visible;
+}
+.left-menum .sidebar .active{
+	background-color: #322f2e;
+}
+.left-menum .sidebar .sidebar-menu .header {
+	height: 50px;
+	color:#fff;
+	background-color: #222d32;
+	text-align: center;
+	line-height: 50px;
+}
+/* 头部 */
+.top-content {
+	position: fixed;
+	top: 0;
+	left: 230px;
+	height: 70px;
+	color: #000;
+	line-height: 50px;
+	text-align: center;
+	width: 100%;
+	margin-left: -230px;
+}
+/* 内容 */
+.right-content {
+	margin-left: 230px;
+/* 	margin-top: 70px; */
+	padding: 10px;
+}
+/*系统信息*/
+.sysinfo table tr td:FIRST-CHILD {
+	width: 230px;
+	padding-left: 20px;
+}
+
+/*删除的用户*/
+#deletedUser table{
+	text-align: center;
+}
