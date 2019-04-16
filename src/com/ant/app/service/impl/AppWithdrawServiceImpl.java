@@ -10,6 +10,7 @@ import com.ant.app.service.inte.CommonService;
 import com.ant.dao.inte.BaseDaoI;
 import com.ant.pojo.Account;
 import com.ant.pojo.User;
+import com.ant.pojo.Withdraw;
 import com.ant.util.ResultUtils;
 import com.ant.util.StrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,6 +85,14 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
                 result.setType(AntType.ANT_208);
                 return AntResponse.response(result);
             }
+            Withdraw withdraw = new Withdraw();
+            withdraw.setAccount_type(type);
+            withdraw.setAddress(address);
+            withdraw.setAmount(amount);
+            withdraw.setRemark(remark);
+            withdraw.setUser_id(userId);
+            withdraw.setState(0);
+            dao.save(withdraw);
             return AntResponse.response(result);
         } catch (Exception e) {
             throw new RuntimeException(e);
