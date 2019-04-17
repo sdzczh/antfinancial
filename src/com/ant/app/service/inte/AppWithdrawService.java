@@ -11,4 +11,6 @@ import com.alibaba.fastjson.JSONObject;
 public interface AppWithdrawService {
 
     String getRechangeInfo(JSONObject json);
+
+    String getWithdrawInfo(Integer userId);
 }

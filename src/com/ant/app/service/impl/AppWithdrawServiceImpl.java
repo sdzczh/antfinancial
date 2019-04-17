@@ -4,14 +4,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.ant.app.model.AntResponse;
 import com.ant.app.model.AntResult;
 import com.ant.app.model.AntType;
-import com.ant.app.service.inte.AppRechangeService;
 import com.ant.app.service.inte.AppWithdrawService;
 import com.ant.app.service.inte.CommonService;
 import com.ant.dao.inte.BaseDaoI;
 import com.ant.pojo.Account;
 import com.ant.pojo.User;
 import com.ant.pojo.Withdraw;
-import com.ant.util.ResultUtils;
 import com.ant.util.StrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -57,6 +55,10 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
             Integer userId = Integer.parseInt(userIdStr);
             getCountHqlParams.put("userId", userId);
             Account account = dao.findUnique(getCountHql,getCountHqlParams);
+            if(account == null){
+                result.setType(AntType.ANT_204);
+                return AntResponse.response(result);
+            }
             BigDecimal balance;
             if(type == 0){
                 balance = new BigDecimal(account.getPackageJ());
@@ -97,5 +99,21 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public String getWithdrawInfo(Integer userId) {
+        AntResult result = new AntResult();
+        String getCountHql = "from Account where userId=:userId";
+        Map<String,Object> getCountHqlParams = new HashMap<>();
+        getCountHqlParams.put("userId", userId);
+        Account account = dao.findUnique(getCountHql,getCountHqlParams);
+        if(account == null){
+            result.setType(AntType.ANT_204);
+            return AntResponse.response(result);
+        }
+        result.setPackageD(account.getPackageD());
+        result.setPackageJ(account.getPackageJ());
+        return AntResponse.response(result);
     }
 }
