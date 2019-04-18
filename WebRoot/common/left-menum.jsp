@@ -103,7 +103,7 @@
 			<li class="treeview">
 				<a href="#" id="manage-recharge"> 
 					<i class="fa fa-shield "></i>
-					充值管理
+					充提管理
 					<i class="fa fa-angle-left pull-right"></i> 
 				</a>
 				<ul class="treeview-menu" style="display: none;">
@@ -113,6 +113,12 @@
 							人工充值
 						</a>
 					</li>
+                    <li>
+                        <a href="${domain}/withdraw/getWithdrawList.action" id="withdraw-uesr">
+                            <i class="fa fa-circle-o"></i>
+                            提现管理
+                        </a>
+                    </li>
 				</ul>
 			</li>
 		</ul>
