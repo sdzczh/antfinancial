@@ -42,8 +42,8 @@ public class AppWithdrawController extends BaseController{
         AntResult antResult = new AntResult();
         if(param!=null && !"".equals(param.trim())){
             try {
-                param = URLDecoder.decode(param, GolbParams.UTF8);
                 param = Base64Utils.decoder(param);
+                param = URLDecoder.decode(param, GolbParams.UTF8);
                 JSONObject json = JSONObject.parseObject(param);
                 return appWithdrawService.getRechangeInfo(json);
             } catch (Exception e) {
@@ -66,6 +66,7 @@ public class AppWithdrawController extends BaseController{
         Integer userId;
         String userIdStr;
         try {
+            param = URLDecoder.decode(param, GolbParams.UTF8);
             userIdStr = Base64Utils.decoder(param);
             userIdStr = Base64Utils.decoder(userIdStr);
         }catch (Exception e){

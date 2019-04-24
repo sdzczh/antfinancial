@@ -1,7 +1,9 @@
 package com.ant.app.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 
+import com.ant.glob.GolbParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,6 +45,7 @@ public class AppUserLoginController extends BaseController{
 		AntResult antResult = new AntResult();
 		if(param!=null && !"".equals(param.trim())){
 			try {
+				param = URLDecoder.decode(param, GolbParams.UTF8);
 				JSONObject json = JSONObject.parseObject(param);
 				return service.login(json);
 			} catch (Exception e) {
