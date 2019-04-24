@@ -27,7 +27,7 @@ public class AppRechangeController extends BaseController{
 	 * @return
 	 */
 	@ResponseBody
-    @RequestMapping(value="getRechangeInfo.action",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(value="getRechangeInfo.action",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
 	public String getRechangeInfo(){
 		return appRechangeService.getRechangeInfo();
 	}
