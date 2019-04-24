@@ -1,11 +1,15 @@
 package com.ant.util;
 
 
+import com.aliyuncs.CommonRequest;
+import com.aliyuncs.CommonResponse;
 import com.aliyuncs.DefaultAcsClient;
 import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
+import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
 import lombok.Setter;
@@ -15,6 +19,7 @@ import net.sf.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
+import java.util.zip.ZipEntry;
 
 /**
  * @描述 短信验证码获取工具<br>
@@ -118,5 +123,49 @@ public class SMSCodeUtil {
     	}
     	return code;
     }
+
+    /**
+    *@Description: 阿里云短信发送
+    *@Param: [phone, code, temp]
+    *@return: java.lang.String
+    *@Author: zhaohe
+    *@date: 2019-04-24
+    */
+	public static com.alibaba.fastjson.JSONObject send(String phone, String temp) {
+		com.alibaba.fastjson.JSONObject json = new com.alibaba.fastjson.JSONObject();
+		DefaultProfile profile = DefaultProfile.getProfile("cn-hangzhou", "LTAIwwPb2BAVB2wu", "SGJYBHkH8MP4ocBcMehUCLjW1O9ivS");
+		IAcsClient client = new DefaultAcsClient(profile);
+
+		CommonRequest request = new CommonRequest();
+		//request.setProtocol(ProtocolType.HTTPS);
+		request.setMethod(MethodType.POST);
+		request.setDomain("dysmsapi.aliyuncs.com");
+		request.setVersion("2017-05-25");
+		request.setAction("SendSms");
+		request.putQueryParameter("RegionId", "cn-hangzhou");
+		request.putQueryParameter("PhoneNumbers", phone);
+		request.putQueryParameter("SignName", "柚子");
+		request.putQueryParameter("TemplateCode", temp);
+		String code = getCode(6);
+		request.putQueryParameter("TemplateParam", "{\"code\":" + code + "}");
+		try {
+			CommonResponse response = client.getCommonResponse(request);
+			String result = response.getData();
+			com.alibaba.fastjson.JSONObject jsonObject = com.alibaba.fastjson.JSONObject.parseObject(result);
+			if(jsonObject == null||!jsonObject.getString("Message").equals("OK")){
+				json.put("code", 416);
+				json.put("obj", code);
+
+				return json;
+			}
+			json.put("code", 200);
+			json.put("obj", code);
+
+			return json;
+		} catch (ClientException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
    
 }

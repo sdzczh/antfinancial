@@ -106,8 +106,7 @@ public class SMSCodeServiceImpl implements SMSCodeService{
 				return AntResponse.response(antResult);
 			}
 			String codeLen = codelenInfo.getVal();
-//			JSONObject codeJson = SMSCodeUtil.sendSms(appk, secret, nonce, templateId, phone, codeLen);
-			JSONObject codeJson = new JSONObject();
+			JSONObject codeJson = SMSCodeUtil.send(phone, templateId);
 
 			String state =codeJson.getString("code");
 			String  code = null;
