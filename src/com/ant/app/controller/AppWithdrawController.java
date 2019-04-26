@@ -43,8 +43,8 @@ public class AppWithdrawController extends BaseController{
         AntResult antResult = new AntResult();
         if(param!=null && !"".equals(param.trim())){
             try {
-                param = Base64Utils.decoder(param);
                 param = URLDecoder.decode(param, GolbParams.UTF8);
+                param = param.replace("=","");
                 JSONObject json = JSONObject.parseObject(param);
                 return appWithdrawService.getRechangeInfo(json);
             } catch (Exception e) {
@@ -61,19 +61,21 @@ public class AppWithdrawController extends BaseController{
      * @return
      */
     @ResponseBody
-    @RequestMapping(value="/getWithdrawInfo.action",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
-    public String getWithdrawInfo(String param){
+    @RequestMapping(value="/getWithdrawInfo.action",method=RequestMethod.POST,produces="application/json;charset=utf-8")
+    public String getWithdrawInfo(@RequestBody String param){
         AntResult antResult = new AntResult();
         if("".equals(param) || param == null){
             antResult.setType(AntType.ANT_206);
             return AntResponse.response(antResult);
         }
-
         Integer userId;
         String userIdStr;
         try {
             param = URLDecoder.decode(param, GolbParams.UTF8);
-            userIdStr = Base64Utils.decoder(param);
+            param = param.replace("=","");
+            JSONObject json = JSONObject.parseObject(param);
+            userIdStr = json.getString("param");
+            userIdStr = Base64Utils.decoder(userIdStr);
         }catch (Exception e){
             antResult.setType(AntType.ANT_206);
             return AntResponse.response(antResult);
