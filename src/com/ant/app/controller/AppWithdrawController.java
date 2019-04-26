@@ -1,5 +1,6 @@
 package com.ant.app.controller;
 
+import antlr.StringUtils;
 import com.alibaba.fastjson.JSONObject;
 import com.ant.app.model.AntResponse;
 import com.ant.app.model.AntResult;
@@ -63,12 +64,16 @@ public class AppWithdrawController extends BaseController{
     @RequestMapping(value="/getWithdrawInfo.action",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
     public String getWithdrawInfo(String param){
         AntResult antResult = new AntResult();
+        if("".equals(param) || param == null){
+            antResult.setType(AntType.ANT_206);
+            return AntResponse.response(antResult);
+        }
+
         Integer userId;
         String userIdStr;
         try {
             param = URLDecoder.decode(param, GolbParams.UTF8);
             userIdStr = Base64Utils.decoder(param);
-            userIdStr = Base64Utils.decoder(userIdStr);
         }catch (Exception e){
             antResult.setType(AntType.ANT_206);
             return AntResponse.response(antResult);

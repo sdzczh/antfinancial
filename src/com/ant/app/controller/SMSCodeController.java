@@ -1,5 +1,6 @@
 package com.ant.app.controller;
 
+import com.ant.glob.GolbParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,6 +14,9 @@ import com.ant.app.model.AntResult;
 import com.ant.app.model.AntType;
 import com.ant.app.service.inte.SMSCodeService;
 import com.ant.base.BaseController;
+
+import java.net.URLDecoder;
+
 /**
  * @描述 短信<br>
  * @author 陈之晶
@@ -39,6 +43,7 @@ public class SMSCodeController extends BaseController{
 		AntResult antResult = new AntResult();
 		if(param!=null && !"".equals(param.trim())){
 			try {
+				param = URLDecoder.decode(param, GolbParams.UTF8);
 				JSONObject json = JSONObject.parseObject(param);
 				return service.getValidateCode(json);
 			} catch (Exception e) {
