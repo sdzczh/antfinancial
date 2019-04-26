@@ -10,6 +10,7 @@ import com.ant.dao.inte.BaseDaoI;
 import com.ant.pojo.Account;
 import com.ant.pojo.User;
 import com.ant.pojo.Withdraw;
+import com.ant.util.Base64Utils;
 import com.ant.util.StrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,10 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
         AntResult result = new AntResult();
         result.setType(AntType.ANT_100);
         try {
+            String param = json.getString("param");
+            param = Base64Utils.decoder(param);
+            param = param.replace("\n","");
+            json = JSONObject.parseObject(param);
             Integer type = json.getInteger("type");
             String address = json.getString("address");
             String remark = json.getString("remark");

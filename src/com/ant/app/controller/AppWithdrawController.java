@@ -41,7 +41,7 @@ public class AppWithdrawController extends BaseController{
     @RequestMapping(value="/commit.action",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
 	public String getRechangeInfo(@RequestBody String param){
         AntResult antResult = new AntResult();
-        if(param!=null && !"".equals(param.trim())){
+        if(param!=null && !"".equals(param)){
             try {
                 param = URLDecoder.decode(param, GolbParams.UTF8);
                 param = param.replace("=","");
