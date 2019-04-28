@@ -60,6 +60,8 @@ public class WithdrawServiceImpl implements WithdrawService {
 
         returnMap.put("count", count);
         returnMap.put("withdrawList", orderList);
+        map.put("page", page);
+        map.put("rows", rows);
         return returnMap;
     }
 

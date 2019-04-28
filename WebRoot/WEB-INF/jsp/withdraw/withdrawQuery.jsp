@@ -22,7 +22,7 @@
         <div class=" row">
             <div class="col-md-12">
                 <input type="text" class="form-control" id="userAccount" name="userAccount" value="${userAccount}" placeholder="用户账号">
-                <select class="form-control" id="sendRole" name="sendRole">
+                <select class="form-control" id="state" name="state">
                     <option value="">--请选择订单状态--</option>
                     <option  value="0" <c:if test="${state=='0'}">selected="selected"</c:if>>未确认</option>
                     <option value="1" <c:if test="${state=='1'}">selected="selected"</c:if>>已提现</option>
