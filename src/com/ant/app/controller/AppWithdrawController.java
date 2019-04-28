@@ -44,7 +44,7 @@ public class AppWithdrawController extends BaseController{
         if(param!=null && !"".equals(param)){
             try {
                 param = URLDecoder.decode(param, GolbParams.UTF8);
-                param = param.replace("=","");
+
                 JSONObject json = JSONObject.parseObject(param);
                 return appWithdrawService.getRechangeInfo(json);
             } catch (Exception e) {
