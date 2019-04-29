@@ -55,6 +55,7 @@
       <root url="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/json-lib-2.4-jdk15.jar!/" />
       <root url="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/lombok-1.16.20.jar!/" />
       <root url="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/aliyun-java-sdk-dysmsapi-1.1.0.jar!/" />
+      <root url="jar://C:/gson-2.8.5.jar!/" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$PROJECT_DIR$/WebRoot/WEB-INF/lib/aspectj-1.8.9.jar!/doc/aspectj5rt-api" />

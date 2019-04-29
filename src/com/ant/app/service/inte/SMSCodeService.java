@@ -12,7 +12,6 @@ public interface SMSCodeService {
 
 	/**
 	 * @描述 发送短信验证码<br>
-	 * @param JSON对象参数
 	 * @return JSON格式返回值
 	 * @author 陈之晶
 	 * @版本 v1.0.0

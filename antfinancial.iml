@@ -80,5 +80,10 @@
     <orderEntry type="library" name="antlr-2.7.7" level="project" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
     <orderEntry type="library" name="gson-2.8.5" level="project" />
+    <orderEntry type="library" name="commons-beanutils-1.9.3" level="project" />
+    <orderEntry type="library" name="commons-httpclient-3.1" level="project" />
+    <orderEntry type="library" name="morph-1.1.1" level="project" />
+    <orderEntry type="library" name="ezmorph-1.0.6" level="project" />
+    <orderEntry type="library" name="commons-collections-3.2.1" level="project" />
   </component>
 </module>

@@ -10,6 +10,6 @@ public class SMSTest {
 
 	public static void main(String[] args) throws Exception {
         SMSCodeUtil smsCodeUtil = new SMSCodeUtil();
-        smsCodeUtil.getValidateCode("13165373280", "SMS_141580455");
+        smsCodeUtil.send("13165373280", "SMS_141580455");
 	}
 }

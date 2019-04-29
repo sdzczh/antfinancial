@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="morph-1.1.1">
+    <CLASSES>
+      <root url="jar://C:/morph-1.1.1.jar!/" />
+      <root url="jar://C:/ezmorph-1.0.6.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

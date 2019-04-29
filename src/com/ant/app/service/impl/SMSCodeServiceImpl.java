@@ -67,7 +67,7 @@ public class SMSCodeServiceImpl implements SMSCodeService{
 				}
 			}
 			
-			/*APPKEY*/
+			/*APPKEY*//*
 			SystemParam appkInfo = common.getValByKey(AntSystemParams.APP_KEY);
 			if(appkInfo==null){
 				antResult.setType(AntType.ANT_107);
@@ -75,7 +75,7 @@ public class SMSCodeServiceImpl implements SMSCodeService{
 			}
 			String appk = appkInfo.getVal();
 			
-			/*APP_SECRET*/
+			*//*APP_SECRET*//*
 			SystemParam secretInfo = common.getValByKey(AntSystemParams.APP_SECRET);
 			if(secretInfo==null){
 				antResult.setType(AntType.ANT_107);
@@ -83,14 +83,14 @@ public class SMSCodeServiceImpl implements SMSCodeService{
 			}
 			String secret = secretInfo.getVal();
 			
-			/*NONCE*/
+			*//*NONCE*//*
 			SystemParam nonceInfo = common.getValByKey(AntSystemParams.NONCE);
 			if(nonceInfo==null){
 				antResult.setType(AntType.ANT_107);
 				return AntResponse.response(antResult);
 			}
 			String nonce = nonceInfo.getVal();
-			
+			*/
 			/*TEMPLATEID*/
 			SystemParam templateInfo = common.getValByKey(AntSystemParams.TEMPLATEID_VALIDATE);
 			if(templateInfo==null){
@@ -99,13 +99,13 @@ public class SMSCodeServiceImpl implements SMSCodeService{
 			}
 			String templateId = templateInfo.getVal();
 			
-			/*CODELEN*/
+			/*CODELEN*//*
 			SystemParam codelenInfo = common.getValByKey(AntSystemParams.CODELEN);
 			if(codelenInfo==null){
 				antResult.setType(AntType.ANT_107);
 				return AntResponse.response(antResult);
 			}
-			String codeLen = codelenInfo.getVal();
+			String codeLen = codelenInfo.getVal();*/
 			JSONObject codeJson = SMSCodeUtil.send(phone, templateId);
 
 			String state =codeJson.getString("code");

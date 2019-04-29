@@ -75,7 +75,7 @@ public class WithdrawServiceImpl implements WithdrawService {
     public void update(Integer id, Integer state) {
         String hql = "from Withdraw where id=" + id;
         Withdraw withdraw = (Withdraw) dao.find(hql).get(0);
-        if("1".equals(state)){
+        if(1 == state){
             withdraw.setState(1);
             dao.saveOrUpdate(withdraw);
         }else{

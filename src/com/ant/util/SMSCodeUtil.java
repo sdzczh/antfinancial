@@ -8,7 +8,6 @@ import com.aliyuncs.IAcsClient;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsRequest;
 import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
 import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
 import com.aliyuncs.http.MethodType;
 import com.aliyuncs.profile.DefaultProfile;
 import com.aliyuncs.profile.IClientProfile;
@@ -19,7 +18,6 @@ import net.sf.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
-import java.util.zip.ZipEntry;
 
 /**
  * @描述 短信验证码获取工具<br>
