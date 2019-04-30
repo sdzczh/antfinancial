@@ -71,7 +71,7 @@ public class AppWithdrawController extends BaseController{
         String userIdStr;
         try {
             param = URLDecoder.decode(param, GolbParams.UTF8);
-            param = param.replace("=","");
+//            param = param.replace("=","");
             JSONObject json = JSONObject.parseObject(param);
             userIdStr = json.getString("param");
             userIdStr = Base64Utils.decoder(userIdStr);

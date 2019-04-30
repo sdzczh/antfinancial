@@ -265,11 +265,11 @@ public class CommonServiceImpl implements CommonService {
 		User user = getUserByUserId(userId);
 		Account account = getAccountByUserId(userId);
 		Integer packageNum = account.getPackageNum();/*增值包数*/
-		double currentProfit = MatchUtils.doCalculationB(String.valueOf(packageNum), "500", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*当前收益指数*/
+		double currentProfit = MatchUtils.doCalculationB(String.valueOf(packageNum), "10", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*当前收益指数*/
 		Integer packageTopNum = Integer.parseInt(getValStrByKey(AntSystemParams.PACKAGE_TOP_NUM));
 		double afterProfit = 0d;
 		if(packageNum<packageTopNum){
-			afterProfit = MatchUtils.doCalculationB(String.valueOf(packageNum+1),"500", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*下一个增值包收益*/
+			afterProfit = MatchUtils.doCalculationB(String.valueOf(packageNum+1),"10", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*下一个增值包收益*/
 			afterProfit = MatchUtils.subtract(afterProfit, currentProfit);
 		}
 		Map<String,Object> map = checkUserProfit(userId);
@@ -320,11 +320,11 @@ public class CommonServiceImpl implements CommonService {
 		String userUpdateState = getValStrByKey(AntSystemParams.USERUPDATE);//用户信息修改开关 0:开 1:关
 
 		Integer packageNum = account.getPackageNum();/*增值包数*/
-		double currentProfit = MatchUtils.doCalculationB(String.valueOf(packageNum), "500", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*当前收益指数*/
+		double currentProfit = MatchUtils.doCalculationB(String.valueOf(packageNum), "10", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*当前收益指数*/
 		Integer packageTopNum = Integer.parseInt(getValStrByKey(AntSystemParams.PACKAGE_TOP_NUM));
 		double afterProfit = 0d;
 		if(packageNum<packageTopNum){
-			afterProfit = MatchUtils.doCalculationB(String.valueOf(packageNum+1),"500", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*下一个增值包收益*/
+			afterProfit = MatchUtils.doCalculationB(String.valueOf(packageNum+1),"10", "(1+1+0.1*(n-1))*(n/2)*(y*0.01)");/*下一个增值包收益*/
 			afterProfit = MatchUtils.subtract(afterProfit, currentProfit);
 		}
 		
