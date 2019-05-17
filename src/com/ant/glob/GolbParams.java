@@ -101,7 +101,10 @@ public class GolbParams{
 	 * 短信验证码获取地址
 	 */
 	public static final String SMS_NOTICE_SERVER_URL="https://api.netease.im/sms/sendtemplate.action";
-	
+
+	//每日体现次数
+	public static final String WITHDRAW_NUMBER_DAYS="WITHDRAW_NUMBER_DAYS";
+
 	
 	
 }

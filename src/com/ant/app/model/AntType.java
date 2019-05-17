@@ -67,4 +67,6 @@ public class AntType {
 	public static final Integer ANT_311 = 311;//推荐人被删除
 
 	public static final Integer ANT_312 = 312;//余额不足
+
+	public static final Integer ANT_313 = 313;//提现超过次数
 }

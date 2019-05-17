@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  * @描述 日期时间工具<br>
@@ -43,6 +44,24 @@ public class DateUtils {
 	public static String getCurrentDateStr() {
 		SimpleDateFormat format = new SimpleDateFormat(CURRENT_DATE_STR);
 		return format.format(new Date());
+	}
+
+    /**
+     * 获取字符串格式的制定日期
+     * XXXX-XX-XX
+     * 把日期往后增加一天.整数往后推,负数往前移动
+     * @param number
+     * @return
+     */
+	public static String getCurrentDateStr(Integer number) {
+        Date date=new Date();//取时间
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(date);
+        calendar.add(calendar.DATE,number);//
+        date=calendar.getTime();
+        SimpleDateFormat formatter = new SimpleDateFormat(CURRENT_DATE_STR);
+        String dateString = formatter.format(date);
+		return dateString;
 	}
 
 	/**

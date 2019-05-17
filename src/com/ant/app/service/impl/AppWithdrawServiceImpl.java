@@ -7,17 +7,22 @@ import com.ant.app.model.AntType;
 import com.ant.app.service.inte.AppWithdrawService;
 import com.ant.app.service.inte.CommonService;
 import com.ant.dao.inte.BaseDaoI;
+import com.ant.glob.GolbParams;
 import com.ant.pojo.Account;
+import com.ant.pojo.SystemParam;
 import com.ant.pojo.User;
 import com.ant.pojo.Withdraw;
+import com.ant.service.inte.SystemParamService;
 import com.ant.util.Base64Utils;
 import com.ant.util.Base64Utils2;
+import com.ant.util.DateUtils;
 import com.ant.util.StrUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +39,7 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
 	@Autowired
 	private BaseDaoI dao;
 	@Autowired
-	private CommonService common;
+	private SystemParamService systemParamService;
 
 
     @Override
@@ -54,7 +59,18 @@ public class AppWithdrawServiceImpl implements AppWithdrawService {
                 result.setType(AntType.ANT_204);
                 return AntResponse.response(result);
             }
-            User user = common.getUserByUserId(userIdStr);
+            String today = DateUtils.getCurrentDateStr();
+            String tomorrow = DateUtils.getCurrentDateStr(1);
+            String sql = "select count(1) from t_withdraw where create_time between '" + today + "' and '" + tomorrow + "'";
+            //今日体现次数
+            BigInteger countByWithdraw = dao.countBySql(sql);
+            //系统设置次数
+            SystemParam withdrawCount = systemParamService.queryByKeyName(GolbParams.WITHDRAW_NUMBER_DAYS);
+            if(countByWithdraw.intValue() > Integer.valueOf(withdrawCount.getVal())){
+                result.setType(AntType.ANT_313);
+                return AntResponse.response(result);
+            }
+//            User user = common.getUserByUserId(userIdStr);
             String getCountHql = "from Account where userId=:userId";
             Map<String,Object> getCountHqlParams = new HashMap<>();
             Integer userId = Integer.parseInt(userIdStr);
